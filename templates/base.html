@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Personal Site{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <header class="header">
+        <div class="welcome-banner">
+            <h1 class="rainbow-text" style="text-align: center">欢迎来到我的世界</h1>
+        </div>
+    </header>
+
+    <!-- 主体内容 -->
+    <div class="main-container">
+        <!-- 左侧导航 - 保持固定 -->
+        <nav class="left-nav">
+            <h3>导航菜单</h3>
+            <a href="{% url 'home' %}" class="left-nav-item {% if request.path == '/' %}active{% endif %}">首页</a>
+            <a href="{% url 'blog' %}" class="left-nav-item {% if 'blog' in request.path %}active{% endif %}">博客</a>
+            <a href="{% url 'portfolio' %}" class="left-nav-item {% if 'portfolio' in request.path %}active{% endif %}">项目集</a>
+            <a href="{% url 'resume' %}" class="left-nav-item {% if 'resume' in request.path %}active{% endif %}">简历</a>
+            <a href="{% url 'chat' %}" class="left-nav-item {% if 'chat' in request.path %}active{% endif %}">聊天室</a>
+        </nav>
+
+        <!-- 主内容区 - 动态变化 -->
+        <main class="content-area">
+            {% block content %}
+            {% endblock %}
+        </main>
+
+        <!-- 右侧边栏 -->
+        <aside class="aside">
+            <h3>热门推荐</h3>
+            <div>推荐内容1</div>
+            <div>推荐内容2</div>
+        </aside>
+    </div>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="social-links">
+                <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+            </div>
+            <p class="copyright">&copy; {% now "Y" %} 我的个人网站. 保留所有权利。</p>
+        </div>
+    </footer>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

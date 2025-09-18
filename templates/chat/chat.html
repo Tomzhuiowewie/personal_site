@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}AI聊天{% endblock %}
+
+{% block content %}
+<section class="chat-container">
+    <h1>AI 聊天助手</h1>
+    
+    <div class="chat-box" id="chat-box">
+        <!-- Messages will appear here -->
+        <div class="message ai-message">
+            <div class="message-content">
+                您好！请问有什么可以帮您的吗？
+            </div>
+        </div>
+    </div>
+
+    <div class="chat-input">
+        <form id="chat-form">
+            <input type="text" id="user-input" placeholder="输入您的消息..." autocomplete="off">
+            <button type="submit">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </form>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/chat.js' %}"></script>
+{% endblock %}

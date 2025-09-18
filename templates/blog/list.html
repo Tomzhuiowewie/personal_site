@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}博客文章{% endblock %}
+
+{% block content %}
+<div class="content-container">
+    <h1 class="page-title">我的博客</h1>
+    {% for post in posts %}
+    <div class="content-block blog">
+        <article class="blog-post">
+            <h2><a href="#">{{ post.title }}</a></h2>
+            <p class="meta">发布于 {{ post.created_at|date:"F j, Y" }} 作者：{{ post.author.username }}</p>
+            <div class="post-content">
+                {{ post.content|truncatewords:50 }}
+            </div>
+            <a href="#" class="read-more btn btn-outline">阅读更多</a>
+        </article>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

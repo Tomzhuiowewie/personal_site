@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+<article class="blog-post-detail">
+    <h1>{{ post.title }}</h1>
+    <p class="meta">
+        发布于 {{ post.created_at|date:"F j, Y" }} 
+        作者：{{ post.author.username }}
+        {% if post.tags %} | 标签：{{ post.tags }}{% endif %}
+    </p>
+    <div class="post-content">
+        {{ post.content|linebreaks }}
+    </div>
+    <a href="{% url 'blog' %}" class="back-to-list">← 返回所有文章</a>
+</article>
+{% endblock %}

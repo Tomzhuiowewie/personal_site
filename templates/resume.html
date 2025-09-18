@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}我的简历{% endblock %}
+
+{% block content %}
+<div class="content-container">
+    <div class="content-block resume">
+        <h2 class="page-title">教育背景</h2>
+        {% for edu in education %}
+        <div class="education-item">
+            <h3>{{ edu.school }}</h3>
+            <p>{{ edu.degree }} | {{ edu.start_date }} - {% if edu.end_date %}{{ edu.end_date }}{% else %}至今{% endif %}</p>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="content-block resume">
+        <h2 class="page-title">工作经历</h2>
+        {% for work in work %}
+        <div class="work-item">
+            <h3>{{ work.company }}</h3>
+            <p>{{ work.position }} | {{ work.start_date }} - {% if work.end_date %}{{ work.end_date }}{% else %}至今{% endif %}</p>
+            <p>{{ work.description }}</p>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="content-block resume">
+        <h2 class="page-title">项目经验</h2>
+        {% for project in projects %}
+        <div class="project-item">
+            <h3>{{ project.title }}</h3>
+            <p>{{ project.description }}</p>
+            {% if project.tech_stack %}<p>Technologies: {{ project.tech_stack }}</p>{% endif %}
+            {% if project.link %}<a href="{{ project.link }}">查看项目</a>{% endif %}
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="content-block resume">
+        <h2 class="page-title">发表作品</h2>
+        {% for pub in publications %}
+        <div class="publication-item">
+            <h3>{{ pub.title }}</h3>
+            <p>{{ pub.journal }} ({{ pub.year }})</p>
+            {% if pub.link %}<a href="{{ pub.link }}">阅读论文</a>{% endif %}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

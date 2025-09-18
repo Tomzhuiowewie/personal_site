@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="content-container welcome-block">
+    <div class="content-block">
+        <h1 class="rainbow-text">我是朱浩</h1>
+        <p class="subtitle">全栈开发者 & 创意问题解决者</p>
+        <div class="cta-buttons">
+            <a href="{% url 'resume' %}" class="btn btn-primary">查看我的简历</a>
+            <a href="{% url 'portfolio' %}" class="btn btn-outline">查看我的作品</a>
+        </div>
+    </div>
+</div>
+
+<div class="content-container">
+    <h2 class="page-title">精选项目</h2>
+    <div class="featured-grid">
+        <div class="content-block featured">
+            <div class="featured-card">
+                <i class="fas fa-laptop-code"></i>
+                <h3>网站开发</h3>
+                <p>使用Django、React等技术构建的现代化响应式网站</p>
+            </div>
+        </div>
+        <div class="content-block featured">
+            <div class="featured-card">
+                <i class="fas fa-mobile-alt"></i>
+                <h3>移动应用</h3>
+                <p>使用Flutter和React Native构建的跨平台应用</p>
+            </div>
+        </div>
+        <div class="content-block featured">
+            <div class="featured-card">
+                <i class="fas fa-server"></i>
+                <h3>后端系统</h3>
+                <p>可扩展的API和微服务架构</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
